@@ -98,16 +98,13 @@ def process_items():
     encrypted_word = challenge_one_data.get("transformed_encrypted_word")
     challenge_one_res = solve_one(transformations, encrypted_word)
 
+    logger.info(f"Redacted / decoded word: {challenge_one_res}")
+
     output = {
         "challenge_one": challenge_one_res,
         "challenge_two": "abc",
         "challenge_three": "def",
         "challenge_four": "looking for answers",
     }
-    # output = OrderedDict()
-    # output["challenge_one"] = challenge_one_res
-    # output["challenge_two"] = "abc"
-    # output["challenge_three"] = "def"
-    # output["challenge_four"] = "looking for answers"
 
     return jsonify(output)
