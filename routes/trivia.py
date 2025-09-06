@@ -12,6 +12,8 @@ def trivia():
         4,  # Q6: "UBS Surveillance" → Amy Winehouse
         4,  # Q7: "Operation Safeguard" → 4px
         5,  # Q8: "Capture The Flag" → all are valid anagrams
-        4   # Q9: "Filler 1" → Hong Kong, Singapore
+        4,  # Q9: "Filler 1" → Hong Kong, Singapore
+        3,  # Q10: 4 dec pl
+        3,  # Q11: pillar of ubs 
     ]
     return json.dumps({"answers": answers})
