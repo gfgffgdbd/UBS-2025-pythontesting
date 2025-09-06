@@ -17,5 +17,8 @@ def trivia():
         3,  # Q11: pillar of ubs 
         3,  # Q12: flag
         4,  # Q13: snake and ladders
+        1,  # Q14: ink
+        2,  # Q15: cool hacker
+        2,  # Q16: fog of wall
     ]
     return json.dumps({"answers": answers})
