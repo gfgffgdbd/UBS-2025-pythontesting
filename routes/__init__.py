@@ -13,3 +13,4 @@ import routes.trading_formula
 import routes.archive
 import routes.mage
 import routes.duolingo
+import routes.sailing
