@@ -8,3 +8,4 @@ import routes.spy
 import routes.ticketing_agent
 import routes.safeguard
 # import routes.princess
+import routes.trading_formula
