@@ -3,11 +3,6 @@ import logging
 from flask import request
 from routes import app
 
-# Configure logging to print to console
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s [%(levelname)s] %(message)s"
-)
 logger = logging.getLogger(__name__)
 
 class UnionFind:
@@ -44,8 +39,7 @@ def find_extra_channels(edges):
 @app.route('/investigate', methods=['POST'])
 def spy_evaluate():
     data = request.get_json()
-    # logger.info(f"Data sent for evaluation: {data}")
-    logger.info(f"Received POST data: {json.dumps(data)}")  # log input payload
+    logger.info(f"Data sent for evaluation: {data}")
 
     output = {"networks": []}
 
@@ -58,6 +52,5 @@ def spy_evaluate():
             "extraChannels": channels
         })
 
-    # logger.info(f"Result: {output}")
-    logger.info(f"Computed result: {json.dumps(output)}")  # log output
+    logger.info(f"Result: {output}")
     return json.dumps(output)
