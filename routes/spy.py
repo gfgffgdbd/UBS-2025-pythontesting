@@ -42,22 +42,29 @@ def find_extra_channels(edges):
 
 
 @app.route('/investigate', methods=['POST'])
+@app.route('/investigate', methods=['POST'])
 def spy_evaluate():
-    data = request.get_json()
-    # logger.info(f"Data sent for evaluation: {data}")
-    logger.info(f"Received POST data: {json.dumps(data)}")  # log input payload
+    try:
+        data = request.get_json()
+        logger.info(f"Received POST data: {json.dumps(data)}")
 
-    output = {"networks": []}
+        output = {"networks": []}
 
-    for network in data.get("networks", []):
-        network_id = network.get("networkId")
-        edges = network.get("network", [])
-        channels = find_extra_channels(edges)
-        output["networks"].append({
-            "networkId": network_id,
-            "extraChannels": channels
-        })
+        # Support both {"networks": [...]} and top-level list
+        networks = data.get("networks") if isinstance(data, dict) else data
 
-    # logger.info(f"Result: {output}")
-    logger.info(f"Computed result: {json.dumps(output)}")  # log output
-    return json.dumps(output)
+        for network in networks:
+            network_id = network.get("networkId")
+            edges = network.get("network", [])
+            extra_channels = find_extra_channels(edges)
+            output["networks"].append({
+                "networkId": network_id,
+                "extraChannels": extra_channels
+            })
+
+        logger.info(f"Computed result: {json.dumps(output)}")
+        return json.dumps(output)
+
+    except Exception as e:
+        logger.exception("Error in /investigate")
+        return json.dumps({"error": str(e)}), 500
