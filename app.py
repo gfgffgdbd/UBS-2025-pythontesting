@@ -5,12 +5,12 @@ from routes import app
 
 logger = logging.getLogger(__name__)
 
-
+# Default route
 @app.route('/', methods=['GET'])
 def default_route():
     return 'Python Template'
 
-
+# Set up logging
 logger = logging.getLogger()
 handler = logging.StreamHandler()
 formatter = logging.Formatter(
