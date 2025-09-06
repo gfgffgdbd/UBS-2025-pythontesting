@@ -15,5 +15,6 @@ def trivia():
         4,  # Q9: "Filler 1" → Hong Kong, Singapore
         3,  # Q10: 4 dec pl
         3,  # Q11: pillar of ubs 
+        2,  # Q12: flag
     ]
     return json.dumps({"answers": answers})
