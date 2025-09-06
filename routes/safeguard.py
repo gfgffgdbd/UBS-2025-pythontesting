@@ -59,10 +59,10 @@ def double_consonants_decode(x):
 def solve_one(transformations, encrypted_word):
 
     # step 1 - expand nested transformations, 
-    reverse_order = transformations[::-1]
+    cleaned = transformations[1:-1]
+    cleaned = cleaned.split(", ")[::-1]
     expanded = []
-
-    for transformation in reverse_order:
+    for transformation in cleaned:
         parts = transformation.split("(")
         for part in parts[:-1]:
             expanded.append(part.strip())
@@ -101,7 +101,7 @@ def process_items():
     output = {
         "challenge_one": challenge_one_res,
         "challenge_two": "abc",
-        "challenge_three": "sos",
+        "challenge_three": "def",
         "challenge_four": "looking for answers",
     }
 
