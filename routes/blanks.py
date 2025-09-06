@@ -1,15 +1,17 @@
 import json
 import logging
-
 from flask import request
-
 from routes import app
+
+import numpy as np
+# import pandas as pd
+# from scipy.interpolate import interp1d
 
 logger = logging.getLogger(__name__)
 
 
-@app.route('/square', methods=['POST'])
-def square_evaluate():
+@app.route('/blankety', methods=['POST'])
+def blankety_evaluate():
     data = request.get_json()
     logging.info("data sent for evaluation {}".format(data))
     input_value = data.get("input")
