@@ -4,7 +4,7 @@ from routes import app
 @app.route('/trivia', methods=['GET'])
 def trivia():
     answers = [
-        4,  # Q1: "Trivia!" → 1 challenge ending with "!"
+        3  # Q1: "Trivia!" → 1 challenge ending with "!"
         # 1,  # Q2: "Ticketing Agent" → Concert
         # 2,  # Q3: "Blankety Blanks" → 100 lists x 1000 elements
         # 2,  # Q4: "Princess Diaries" → Fat Louie
