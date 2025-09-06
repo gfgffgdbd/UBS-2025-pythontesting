@@ -7,7 +7,7 @@ def trivia():
         3,  # Q1: "Trivia!" → 1 challenge ending with "!"
         1,  # Q2: "Ticketing Agent" → Concert
         2,  # Q3: "Blankety Blanks" → 100 lists x 1000 elements
-        # 2,  # Q4: "Princess Diaries" → Fat Louie
+        2,  # Q4: "Princess Diaries" → Fat Louie
         # 3,  # Q5: "MST Calculation" → 8
         # 4,  # Q6: "UBS Surveillance" → Amy Winehouse
         # 1,  # Q7: "Operation Safeguard" → 4px
