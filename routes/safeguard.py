@@ -96,6 +96,9 @@ def process_items():
     challenge_one_data = data.get("challenge_one", "sos")
     transformations = challenge_one_data.get("transformations")
     encrypted_word = challenge_one_data.get("transformed_encrypted_word")
+
+    logger.info(f"Original encrypted word: {encrypted_word}")
+
     challenge_one_res = solve_one(transformations, encrypted_word)
 
     logger.info(f"Redacted / decoded word: {challenge_one_res}")
