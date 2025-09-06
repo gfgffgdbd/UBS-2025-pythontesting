@@ -10,7 +10,7 @@ def trivia():
         2,  # Q4: "Princess Diaries" → Fat Louie
         3,  # Q5: "MST Calculation" → 8
         4,  # Q6: "UBS Surveillance" → Amy Winehouse
-        2,  # Q7: "Operation Safeguard" → 4px
+        3,  # Q7: "Operation Safeguard" → 4px
         # 1,  # Q8: "Capture The Flag" → all are valid anagrams
         # 4   # Q9: "Filler 1" → Hong Kong, Singapore
     ]
