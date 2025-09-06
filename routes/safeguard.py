@@ -2,6 +2,7 @@ import json
 import logging
 from flask import request, jsonify
 from routes import app
+from collections import OrderedDict
 
 logger = logging.getLogger(__name__)
 def mirror_words_decode(x):
@@ -104,5 +105,10 @@ def process_items():
         "challenge_three": "def",
         "challenge_four": "looking for answers",
     }
+    # output = OrderedDict()
+    # output["challenge_one"] = challenge_one_res
+    # output["challenge_two"] = "abc"
+    # output["challenge_three"] = "def"
+    # output["challenge_four"] = "looking for answers"
 
-    return jsonify(output)
+    return output
