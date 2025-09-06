@@ -11,7 +11,7 @@ def trivia():
         3,  # Q5: "MST Calculation" → 8
         4,  # Q6: "UBS Surveillance" → Amy Winehouse
         4,  # Q7: "Operation Safeguard" → 4px
-        1,  # Q8: "Capture The Flag" → all are valid anagrams
-        # 4   # Q9: "Filler 1" → Hong Kong, Singapore
+        5,  # Q8: "Capture The Flag" → all are valid anagrams
+        4   # Q9: "Filler 1" → Hong Kong, Singapore
     ]
     return json.dumps({"answers": answers})
