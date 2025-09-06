@@ -94,7 +94,7 @@ def process_items():
     data = request.get_json()  
     output = {}
 
-    challenge_one_data = data.get("challenge_one", {})
+    challenge_one_data = data.get("challenge_one", "sos")
     transformations = challenge_one_data.get("transformations")
     encrypted_word = challenge_one_data.get("transformed_encrypted_word")
     challenge_one_res = solve_one(transformations, encrypted_word)
