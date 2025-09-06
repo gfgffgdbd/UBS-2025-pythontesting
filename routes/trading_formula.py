@@ -1,9 +1,12 @@
 import json
 import re
 import math
+import logging
 from flask import Flask, request, jsonify
+from routes import app
 
-app = Flask(__name__)
+logger = logging.getLogger(__name__)
+# app = Flask(__name__)
 
 class LaTeXFormulaEvaluator:
     def __init__(self):
