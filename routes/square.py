@@ -5,7 +5,7 @@ from flask import request
 
 from routes import app
 
-logger = logging.getLogger(__name__)
+# logger = logging.getLogger(__name__)
 
 
 @app.route('/square', methods=['POST'])

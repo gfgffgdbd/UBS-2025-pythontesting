@@ -7,7 +7,7 @@ import numpy as np
 # import pandas as pd
 # from scipy.interpolate import interp1d
 
-logger = logging.getLogger(__name__)
+# logger = logging.getLogger(__name__)
 
 
 @app.route('/blankety', methods=['POST'])
