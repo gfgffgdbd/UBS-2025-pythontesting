@@ -59,7 +59,7 @@ def double_consonants_decode(x):
 
 def solve_one(transformations, encrypted_word):
 
-    # step 1 - expand nested transformations, 
+    # step 1 - expand nested transformations
     transformations = transformations[::-1]
     expanded = []
     for transformation in transformations:
