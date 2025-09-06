@@ -4,4 +4,5 @@ app = Flask(__name__)
 import routes.square
 import routes.trivia
 import routes.blanks
-# import routes.spy
+import routes.spy
+import routes.ticketing_agent

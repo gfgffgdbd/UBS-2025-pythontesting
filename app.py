@@ -26,3 +26,7 @@ if __name__ == "__main__":
     port = sock.getsockname()[1]
     sock.close()
     app.run(port=port)
+
+# if __name__ == "__main__":
+#     logging.info("Starting application ...")
+#     app.run(debug=True)
