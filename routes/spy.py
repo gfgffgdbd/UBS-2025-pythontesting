@@ -10,35 +10,51 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-class UnionFind:
-    def __init__(self):
-        self.parent = {}
+def find_cycles(edges):
+    from collections import defaultdict
 
-    def find(self, x):
-        if x not in self.parent:
-            self.parent[x] = x
-        if self.parent[x] != x:
-            self.parent[x] = self.find(self.parent[x])
-        return self.parent[x]
-
-    def union(self, x, y):
-        px = self.find(x)
-        py = self.find(y)
-        if px == py: # if already part of same set, forms cycle, remove edge 
-            return False
-        self.parent[py] = px
-        return True
-    
-def find_extra_channels(edges):
-    """
-    Returns the edges that create cycles (extra channels)
-    """
-    uf = UnionFind()
-    extra_edges = []
+    graph = defaultdict(list)
     for edge in edges:
-        if not uf.union(edge['spy1'], edge['spy2']):
-            extra_edges.append(edge)
-    return extra_edges
+        graph[edge['spy1']].append((edge['spy2'], edge))
+        graph[edge['spy2']].append((edge['spy1'], edge))
+
+    visited = set()
+    parent = {}
+    cycle_edges = set()
+
+    def dfs(node, par):
+        visited.add(node)
+        for neighbor, edge in graph[node]:
+            if neighbor == par:
+                continue
+            if neighbor in visited:
+                # reconstruct the cycle path from node -> ... -> neighbor
+                cur = node
+                while cur is not None and cur != neighbor:
+                    prev = parent[cur]
+                    if prev is None:  # stop at root
+                        break
+                    key = tuple(sorted((cur, prev)))
+                    cycle_edges.add(key)
+                    cur = prev
+                # also add the back edge itself
+                cycle_edges.add(tuple(sorted((node, neighbor))))
+            else:
+                parent[neighbor] = node
+                dfs(neighbor, node)
+
+    for node in graph:
+        if node not in visited:
+            parent[node] = None
+            dfs(node, None)
+
+    # Return all edges that are part of cycles
+    result = []
+    for edge in edges:
+        key = tuple(sorted((edge['spy1'], edge['spy2'])))
+        if key in cycle_edges:
+            result.append(edge)
+    return result
 
 
 @app.route('/investigate', methods=['POST'])
@@ -56,7 +72,7 @@ def spy_evaluate():
         for network in networks:
             network_id = network.get("networkId")
             edges = network.get("network", [])
-            extra_channels = find_extra_channels(edges)
+            extra_channels = find_cycles(edges)
             output["networks"].append({
                 "networkId": network_id,
                 "extraChannels": extra_channels
