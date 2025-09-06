@@ -11,4 +11,4 @@ import routes.safeguard
 # import routes.princess
 import routes.trading_formula
 import routes.archive
-import mage
+import routes.mage
