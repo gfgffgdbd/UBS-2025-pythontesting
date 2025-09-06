@@ -100,9 +100,9 @@ def process_items():
 
     output = {
         "challenge_one": challenge_one_res,
-        "challenge_two": "",
-        "challenge_three": "",
-        "challenge_four": "",
+        "challenge_two": "abc",
+        "challenge_three": "sos",
+        "challenge_four": "looking for answers",
     }
 
     return jsonify(output)
