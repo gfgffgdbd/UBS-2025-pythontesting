@@ -111,4 +111,4 @@ def process_items():
     # output["challenge_three"] = "def"
     # output["challenge_four"] = "looking for answers"
 
-    return output
+    return jsonify(output)
