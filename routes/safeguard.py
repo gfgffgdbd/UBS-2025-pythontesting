@@ -60,11 +60,9 @@ def double_consonants_decode(x):
 def solve_one(transformations, encrypted_word):
 
     # step 1 - expand nested transformations, 
-    cleaned = transformations[1:-1]
-    # cleaned = cleaned.split(", ")[::-1]
-    cleaned = cleaned[::-1]
+    transformations = transformations[::-1]
     expanded = []
-    for transformation in cleaned:
+    for transformation in transformations:
         parts = transformation.split("(")
         for part in parts[:-1]:
             expanded.append(part.strip())
