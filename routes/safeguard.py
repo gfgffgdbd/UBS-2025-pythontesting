@@ -61,7 +61,8 @@ def solve_one(transformations, encrypted_word):
 
     # step 1 - expand nested transformations, 
     cleaned = transformations[1:-1]
-    cleaned = cleaned.split(", ")[::-1]
+    # cleaned = cleaned.split(", ")[::-1]
+    cleaned = cleaned[::-1]
     expanded = []
     for transformation in cleaned:
         parts = transformation.split("(")
