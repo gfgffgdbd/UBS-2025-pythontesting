@@ -24,16 +24,13 @@ class UnionFind:
         self.parent[py] = px
         return True
     
-def find_extra_channels(edges):
-    """
-    Returns the edges that create cycles (extra channels)
-    """
+def find_channels(edges):
     uf = UnionFind()
-    extra_edges = []
+    final_edges = []
     for edge in edges:
-        if not uf.union(edge['spy1'], edge['spy2']):
-            extra_edges.append(edge)
-    return extra_edges
+        if uf.union(edge['spy1'], edge['spy2']):
+            final_edges.append(edge)  
+    return final_edges
 
 
 @app.route('/investigate', methods=['POST'])
@@ -46,7 +43,7 @@ def spy_evaluate():
     for network in data.get("networks", []):
         network_id = network.get("networkId")
         edges = network.get("network", [])
-        channels = find_extra_channels(edges)
+        channels = find_channels(edges)
         output["networks"].append({
             "networkId": network_id,
             "extraChannels": channels
